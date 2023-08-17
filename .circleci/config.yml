@@ -117,8 +117,7 @@ workflows:
               subset: ['packages', 'examples']
           filters:
             branches:
-              only:
-                - update-docker-config
+              ignore: main
 
   deploy:
     jobs:
