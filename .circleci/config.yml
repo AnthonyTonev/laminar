@@ -115,9 +115,9 @@ workflows:
             parameters:
               node-image: ['circleci/node:18']
               subset: ['packages', 'examples']
-          filters:
-            branches:
-              only: update-docker-config
+          # filters:
+          #   branches:
+          #     ignore: main
 
   deploy:
     jobs:
