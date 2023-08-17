@@ -117,7 +117,7 @@ workflows:
               subset: ['packages', 'examples']
           filters:
             branches:
-              ignore: main
+              only: update-docker-config
 
   deploy:
     jobs:
@@ -128,7 +128,7 @@ workflows:
               subset: ['packages', 'examples']
           filters:
             branches:
-              only: update-docker-config
+              only: main
       - publish:
           requires:
             - test
