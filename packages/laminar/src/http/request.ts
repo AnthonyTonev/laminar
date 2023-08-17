@@ -20,9 +20,9 @@ export function toHttpRequest(incommingMessage: IncomingMessage): HttpContext {
   const host = (headers['x-forwarded-host'] as string)?.split(',')[0] ?? headers['host'];
   let url = ''
     try {
-      url = new url_1.URL((_d = incommingMessage.url) !== null && _d !== void 0 ? _d : '', `${protocol}://${host}`);
+      url = new URL((incommingMessage.url) !== null && incommingMessage.url !== void 0 ? incommingMessage.url : '', `${protocol}://${host}`);
     } catch(err) {
-      url = new url_1.URL('/', `${protocol}://${host}`);
+      url = new URL('/', `${protocol}://${host}`);
     }
   const query = parseQueryObjects(new URLSearchParams(incommingMessage.url?.split('?')?.[1] ?? ''));
   const cookies = headers.cookie ? parseCookie(headers.cookie) : undefined;
