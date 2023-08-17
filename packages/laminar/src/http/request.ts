@@ -20,7 +20,7 @@ export function toHttpRequest(incommingMessage: IncomingMessage): HttpContext {
   const host = (headers['x-forwarded-host'] as string)?.split(',')[0] ?? headers['host'];
   let url = ''
     try {
-      url = new URL(incommingMessage.url !== null && incommingMessage.url !== undefined ? incommingMessage.url : '', `${protocol}://${host}`);
+      url = new URL(incommingMessage.url ?? '', `${protocol}://${host}`);
     } catch(err) {
       url = new URL('/', `${protocol}://${host}`);
     }
